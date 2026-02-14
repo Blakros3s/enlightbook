@@ -1,0 +1,4 @@
+-r base.txt
+
+# Production dependencies
+sentry-sdk>=1.32.0

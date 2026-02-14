@@ -1,0 +1,13 @@
+-r base.txt
+
+# Development dependencies
+pytest>=7.4.0
+pytest-django>=4.7.0
+pytest-cov>=4.1.0
+factory-boy>=3.3.0
+freezegun>=1.2.0
+ipython>=8.16.0
+django-debug-toolbar>=4.2.0
+black>=23.9.0
+flake8>=6.1.0
+isort>=5.12.0
