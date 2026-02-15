@@ -50,7 +50,8 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/enlightbook
       - REDIS_URL=redis://redis:6379/0
       - SECRET_KEY=dev-secret-key-change-in-production
-      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+      - ALLOWED_HOSTS=localhost,127.0.0.1,backend,0.0.0.0,*
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:3000
     depends_on:
       db:
         condition: service_healthy
@@ -105,7 +106,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+      - NEXT_PUBLIC_API_URL=/api
       - API_URL=http://backend:8000/api
     depends_on:
       - backend

@@ -540,11 +540,13 @@ class StudentResult(models.Model):
         if self.total_marks is not None:
             self.has_passed = self.total_marks >= self.exam_detail.passing_marks
         
-        # Save without calling full save to avoid recursion
-        self.save(update_fields=[
-            'total_marks', 'percentage', 'grade', 'grade_point',
-            'theory_grade', 'practical_grade', 'has_passed'
-        ])
+        # Only save if object already has a PK (exists in DB)
+        # If it's a new object, just return and let the main save() handle it
+        if self.pk:
+            super().save(update_fields=[
+                'total_marks', 'percentage', 'grade', 'grade_point',
+                'theory_grade', 'practical_grade', 'has_passed'
+            ])
     
     def save(self, *args, **kwargs):
         self.clean()

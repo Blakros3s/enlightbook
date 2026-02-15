@@ -200,13 +200,14 @@ class StudentBill(models.Model):
             self.tax_amount + self.late_fee_amount
         )
         
-        # Update status based on payment
-        if self.is_fully_paid:
-            self.status = 'fully_paid'
-        elif self.amount_paid > 0:
-            self.status = 'partially_paid'
-        elif self.is_overdue and self.status == 'issued':
-            self.status = 'overdue'
+        # Update status based on payment (only if instance already has a pk)
+        if self.pk:
+            if self.is_fully_paid:
+                self.status = 'fully_paid'
+            elif self.amount_paid > 0:
+                self.status = 'partially_paid'
+            elif self.is_overdue and self.status == 'issued':
+                self.status = 'overdue'
         
         super().save(*args, **kwargs)
 

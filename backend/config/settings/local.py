@@ -8,9 +8,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
 # Enable Django Debug Toolbar
-INSTALLED_APPS += ['debug_toolbar']
-
-MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+# INSTALLED_APPS += ['debug_toolbar']
+# MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -32,3 +31,6 @@ LOGGING['loggers']['apps']['level'] = 'DEBUG'
 
 # CORS - Allow all for development
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Disable APPEND_SLASH to allow explicit trailing slash control
+APPEND_SLASH = False

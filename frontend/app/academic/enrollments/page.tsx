@@ -1,1 +1,1 @@
-export { default } from '../placeholder/page';
+export { default } from '../../placeholder/page';
